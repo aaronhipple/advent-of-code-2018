@@ -47,3 +47,4 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - advent-of-code
+      - hspec
