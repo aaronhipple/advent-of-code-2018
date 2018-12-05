@@ -9,6 +9,9 @@ import           Data.Set   (empty, insert, member)
 
 exec_01 :: IO ()
 exec_01 = do
+  putStrLn "*********"
+  putStrLn "* Day 1 *"
+  putStrLn "*********"
   deltas <- fmap parse (readFile "resources/01.txt")
   putStrLn $ "Sum: " ++ show (sum deltas)
   putStrLn $

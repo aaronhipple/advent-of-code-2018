@@ -3,4 +3,7 @@ module Main where
 import           Lib
 
 main :: IO ()
-main = exec_01
+main = do
+  exec_01
+  putStrLn ""
+  exec_02
