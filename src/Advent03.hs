@@ -43,7 +43,7 @@ claimsPerCoordinate claims = claimMap
 
 noOverlaps :: ClaimMap -> Claim -> Bool
 noOverlaps claimMap claim =
-  all (\coords -> fmap (< 2) (Map.lookup coords claimMap) == Just True) $
+  all (\coords -> fmap (== 1) (Map.lookup coords claimMap) == Just True) $
   claimCoordinates claim
 
 claimCoordinates :: Claim -> [(Int, Int)]
