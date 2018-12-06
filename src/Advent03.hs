@@ -10,6 +10,7 @@ import           Data.Char
 import qualified Data.Map.Strict              as Map
 import           Data.Maybe
 import           Text.ParserCombinators.ReadP
+import           Utils                        (parseMaybe)
 
 data Claim =
   Claim Int
@@ -75,9 +76,3 @@ parseClaim str =
       return (id, (x, y), (w, h))
     digits :: ReadP Int
     digits = fmap read $ munch1 isDigit
-
-parseMaybe :: ReadP a -> String -> Maybe a
-parseMaybe parser input =
-  case readP_to_S parser input of
-    []              -> Nothing
-    ((result, _):_) -> Just result

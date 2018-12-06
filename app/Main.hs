@@ -9,3 +9,5 @@ main = do
   exec_02
   putStrLn ""
   exec_03
+  putStrLn ""
+  exec_04
