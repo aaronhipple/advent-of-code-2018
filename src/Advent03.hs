@@ -24,9 +24,14 @@ exec_03 = do
   putStrLn "*********"
   claims <-
     fmap (map (fromJust . parseClaim) . lines) $ readFile "resources/03.txt"
+  let claimMap = claimsPerCoordinate claims
   putStrLn $
     "Overlapping Claim Inches: " ++
-    show (length $ filter (> 1) $ Map.elems $ claimsPerCoordinate claims)
+    show (length $ filter (> 1) $ Map.elems $ claimMap)
+  let nonOverlappingClaims = filter (noOverlaps claimMap) $ claims
+  let Claim nonOverlappingClaimId _ _ = head $ nonOverlappingClaims
+  putStrLn $ "Non-overlapping claims: " ++ show nonOverlappingClaims
+  putStrLn $ "Non-overlapping claim: " ++ show nonOverlappingClaimId
 
 type ClaimMap = Map.Map (Int, Int) Int
 
@@ -34,8 +39,12 @@ claimsPerCoordinate :: [Claim] -> ClaimMap
 claimsPerCoordinate claims = claimMap
   where
     claimMap = foldl count Map.empty (concatMap claimCoordinates claims)
-    count :: ClaimMap -> (Int, Int) -> ClaimMap
     count m coords = Map.insertWith (+) coords 1 m
+
+noOverlaps :: ClaimMap -> Claim -> Bool
+noOverlaps claimMap claim =
+  all (\coords -> fmap (< 2) (Map.lookup coords claimMap) == Just True) $
+  claimCoordinates claim
 
 claimCoordinates :: Claim -> [(Int, Int)]
 claimCoordinates (Claim _ (x, y) (w, h)) =
