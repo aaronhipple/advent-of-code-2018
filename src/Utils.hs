@@ -5,6 +5,7 @@ module Utils
   , countMap
   , keyWithMaxValue
   , maxValue
+  , argmins
   ) where
 
 import           Data.Functor
@@ -41,3 +42,16 @@ maxValue = fromJust . Map.foldlWithKey f Nothing
     f (Just (k', v')) k v
       | v > v' = Just (k, v)
       | v <= v' = Just (k', v')
+
+argmin f xs = Prelude.head $ (argmins f xs)
+
+argmins :: Ord b => (a -> b) -> [a] -> [a]
+argmins _ [] = []
+argmins f (x:xs) = fst $ foldl g ([x], f x) xs
+  where
+    g (mins, y) x
+      | y' < y = ([x], y')
+      | y' == y = (x : mins, y)
+      | otherwise = (mins, y)
+      where
+        y' = f x
