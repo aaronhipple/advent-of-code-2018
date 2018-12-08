@@ -7,10 +7,11 @@ module Advent03
   ) where
 
 import           Data.Char
+import           Data.List.NonEmpty           (fromList)
 import qualified Data.Map.Strict              as Map
 import           Data.Maybe
 import           Text.ParserCombinators.ReadP
-import           Utils                        (parseMaybe)
+import           Utils                        (countMap, parseMaybe)
 
 data Claim =
   Claim Int
@@ -37,10 +38,7 @@ exec_03 = do
 type ClaimMap = Map.Map (Int, Int) Int
 
 claimsPerCoordinate :: [Claim] -> ClaimMap
-claimsPerCoordinate claims = claimMap
-  where
-    claimMap = foldl count Map.empty (concatMap claimCoordinates claims)
-    count m coords = Map.insertWith (+) coords 1 m
+claimsPerCoordinate = countMap . fromList . concatMap claimCoordinates
 
 noOverlaps :: ClaimMap -> Claim -> Bool
 noOverlaps claimMap claim =
