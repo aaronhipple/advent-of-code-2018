@@ -3,16 +3,17 @@ module Main where
 import           Lib
 
 main :: IO ()
-main
-  -- exec_01
-  -- putStrLn ""
-  -- exec_02
-  -- putStrLn ""
-  -- exec_03
-  -- putStrLn ""
-  -- exec_04
-  -- putStrLn ""
-  -- exec_05
-  -- putStrLn ""
- = do
+main = do
+  exec_01
+  putStrLn ""
+  exec_02
+  putStrLn ""
+  exec_03
+  putStrLn ""
+  exec_04
+  putStrLn ""
+  exec_05
+  putStrLn ""
   exec_06
+  putStrLn ""
+  exec_07
