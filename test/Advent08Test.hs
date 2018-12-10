@@ -7,7 +7,7 @@ import           Test.Hspec
 
 license = "2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2"
 
-result = Node [Node [] [10, 11, 12], Node [Node [] [99]] [2]] [1, 1, 2]
+result = Node [1, 1, 2] [Node [10, 11, 12] [], Node [2] [Node [99] []]]
 
 test_08 :: IO ()
 test_08 =
