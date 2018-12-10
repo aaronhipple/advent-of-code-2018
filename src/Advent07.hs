@@ -33,7 +33,7 @@ exec_07 = do
   putStrLn $ "First nodes: " ++ Set.toList (findFirsts graph)
   putStrLn $ "Last nodes: " ++ Set.toList (findLasts graph)
   putStrLn $ "Traversed (Pt 1): " ++ (show $ trav graph)
-  putStrLn "* Part 7 *"
+  putStrLn "* Part 2 *"
   putStrLn $ "Time: " ++ (show $ snd $ runTicks 5 60 graph)
 
 newtype Graph a =
