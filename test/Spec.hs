@@ -7,6 +7,7 @@ import           Advent07Test
 import           Advent08Test
 import           Advent09Test
 import           Advent10Test
+import           Advent11Test
 import           Test.Hspec
 
 main :: IO ()
@@ -20,3 +21,4 @@ main = do
   test_08
   test_09
   test_10
+  test_11

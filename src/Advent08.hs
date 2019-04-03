@@ -30,7 +30,7 @@ instance Foldable Tree where
   foldMap f (Node x cs) = foldMap (foldMap f) cs `mappend` f x
 
 sumAll :: Tree [Int] -> Int
-sumAll = sum . foldl (++) []
+sumAll = sum . concat
 
 value :: Tree [Int] -> Int
 value (Node meta []) = sum meta
@@ -54,6 +54,6 @@ parseLicense = parseMaybe parseLicenseNode
       return $ Node metaNodes childNodes
     digits = do
       skipSpaces
-      n <- fmap (read) $ munch1 isDigit
+      n <- read <$> munch1 isDigit
       skipSpaces
       return n

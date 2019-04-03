@@ -9,6 +9,7 @@ module Lib
   , exec_08
   , exec_09
   , exec_10
+  , exec_11
   ) where
 
 import           Advent01 (exec_01)
@@ -21,3 +22,4 @@ import           Advent07 (exec_07)
 import           Advent08 (exec_08)
 import           Advent09 (exec_09)
 import           Advent10 (exec_10)
+import           Advent11 (exec_11)

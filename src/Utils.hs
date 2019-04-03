@@ -5,6 +5,9 @@ module Utils
   , countMap
   , keyWithMaxValue
   , maxValue
+  , argmax
+  , argmaxs
+  , argmin
   , argmins
   ) where
 
@@ -42,6 +45,19 @@ maxValue = fromJust . Map.foldlWithKey f Nothing
     f (Just (k', v')) k v
       | v > v' = Just (k, v)
       | v <= v' = Just (k', v')
+
+argmax f xs = Prelude.head $ (argmaxs f xs)
+
+argmaxs :: Ord b => (a -> b) -> [a] -> [a]
+argmaxs _ [] = []
+argmaxs f (x:xs) = fst $ foldl g ([x], f x) xs
+  where
+    g (maxs, y) x
+      | y' > y = ([x], y')
+      | y' == y = (x : maxs, y)
+      | otherwise = (maxs, y)
+      where
+        y' = f x
 
 argmin f xs = Prelude.head $ (argmins f xs)
 

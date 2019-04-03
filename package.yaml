@@ -19,7 +19,8 @@ extra-source-files:
 # common to point users to the README.md file.
 description: Please see the README on GitHub at <https://github.com/aaronhipple/advent-of-code#readme>
 
-default-extensions: []
+default-extensions:
+  - BangPatterns
 
 dependencies:
   - base >= 4.7 && < 5
@@ -37,6 +38,7 @@ executables:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
+      - -O2
     dependencies:
       - advent-of-code
 
