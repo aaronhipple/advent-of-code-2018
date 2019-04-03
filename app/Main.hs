@@ -23,4 +23,5 @@ runDay day =
     "9"  -> exec_09
     "10" -> exec_10
     "11" -> exec_11
+    "12" -> exec_12
     x    -> putStrLn $ "No such day `" ++ x ++ "`"
